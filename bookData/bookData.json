@@ -1,0 +1,13 @@
+bookData = {
+  "Book": {
+    "Name":"Design Aids",
+    "totalPages": 49,
+    "totalChapters": 3,
+    "info":{
+    	//"name of chapter":[startpage, endpage, totalpages in chapter]
+        "chapter1":[22, 33, 12],
+        "chapter2":[34, 41, 8],
+        "chapter3":[42, 49, 8],
+      }
+  }
+};
