@@ -15,30 +15,32 @@ $(document).ready(function() {
     var x = document.getElementById('imageDiv');
     x.appendChild(image);
 
+    // Code that will run when left or right button are clicked
+
+    //Code fo left button
+    $("#left-button").click(function(){
+		srcMain = goLeft(srcMain);
+		image.src = srcStart + srcMain + srcEnd;
+	});
+
+	// Code for right button
+	$("#right-button").click(function(){
+		srcMain = goRight(srcMain);
+		image.src = srcStart + srcMain + srcEnd;
+	}); 
+
     // code to write the events when arrow keys are pressed
 	window.addEventListener("keydown", onkeypress, false);
 	    function onkeypress(key){
 
 	      	//code when left key is pressed
 	        if(key.keyCode == "37"){
-
-	          	//first of all get what is the src value of that image
-	          	if(srcMain == 1){
-	          		//do nothing
-	          	}
-	          	else{
-	          		srcMain = srcMain - 1;
-	          	}
-
+	        	srcMain = goLeft(srcMain);
 	        }
+
 	        // code when right key is pressed
 	        if(key.keyCode == "39"){
-	          	if(srcMain == finalPage){
-	          		//do nothing
-	          	}
-	          	else{
-	          		srcMain = srcMain + 1;
-	          	}
+	        	srcMain = goRight(srcMain);
 	        }
 	        image.src = srcStart + srcMain + srcEnd; 
 	    }
@@ -46,3 +48,24 @@ $(document).ready(function() {
     // image source is made finally
     image.src = srcStart + srcMain + srcEnd;
 });
+
+//Function to turn the page left
+function goLeft(srcMain){
+	//first of all get what is the src value of that image
+  	if(srcMain == 1){
+  		//do nothing
+  	}
+  	else{
+  		return srcMain = srcMain - 1;
+  	}
+}
+
+// Function to turn the page toward right
+function goRight(srcMain){
+	if(srcMain == finalPage){
+  		//do nothing
+  	}
+  	else{
+  		return srcMain = srcMain + 1;
+  	}
+}

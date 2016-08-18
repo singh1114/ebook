@@ -5,3 +5,30 @@ img{
 	height:98vh;
 	margin-top:1vh;
 }
+.glyphicon{
+	color:white; 
+	height:99.9vh; 
+	padding-top:45vh; 
+	background:black;
+}
+#left-button{
+	float:left;
+	position:relative;
+}
+#right-button{
+	float:right;
+	position: relative;
+	margin-top: -99.01vh;
+}
+@media only screen and (max-width:600px){
+	img{
+		width:85%;
+		margin-right:4%;
+		margin-top: 10%;
+		height:auto;
+	}
+	#right-button{
+		margin-top:-125%;
+		height: 100vh;
+	}
+}
