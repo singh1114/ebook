@@ -1,33 +1,41 @@
 // code that can be executed before the page loads
 
+// First of all take the sessionStorage variable
+var book = sessionStorage.getItem('book');
 
 // wait for the document to get ready
 $(document).ready(function() {
 	//totalnumber of pages
-	finalPage = bookData.Book.totalPages;
+	finalPage = bookData.Book[book].totalPages;
+	bookName = bookData.Book[book].Name;
+
 	// code to create a image tag with default cover page.
 	var image = document.createElement('img');
 	image.id = "mainImage";
 	image.style.border = "2px solid black";
-	var srcStart = "../bookPics/";
+
+	// Code that will set the position from where image will be extracted
+	var srcStart = "../bookPics/" + bookName + "/";
 	var srcMain = 1;
 	var srcEnd = ".png";
-    var x = document.getElementById('imageDiv');
-    x.appendChild(image);
 
-    // Code that will run when left or right button are clicked
+	// Now append the image created on the browser
+  var x = document.getElementById('imageDiv');
+  x.appendChild(image);
 
-    //Code fo left button
-    $("#left-button").click(function(){
-		srcMain = goLeft(srcMain);
-		image.src = srcStart + srcMain + srcEnd;
+  // Code that will run when left or right button are clicked
+
+  //Code fo left button
+  $("#left-button").click(function(){
+	srcMain = goLeft(srcMain);
+	image.src = srcStart + srcMain + srcEnd;
 	});
 
 	// Code for right button
 	$("#right-button").click(function(){
 		srcMain = goRight(srcMain);
 		image.src = srcStart + srcMain + srcEnd;
-	}); 
+	});
 
     // code to write the events when arrow keys are pressed
 	window.addEventListener("keydown", onkeypress, false);
@@ -42,7 +50,7 @@ $(document).ready(function() {
 	        if(key.keyCode == "39"){
 	        	srcMain = goRight(srcMain);
 	        }
-	        image.src = srcStart + srcMain + srcEnd; 
+	        image.src = srcStart + srcMain + srcEnd;
 	    }
 
     // image source is made finally

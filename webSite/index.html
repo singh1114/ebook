@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BOOK</title>
+	<script type="text/javascript" src="../bookData/bookData.json"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var bookDiv = document.getElementById('books');
+			var totalbooks = bookData.Book.length;
+
+			for(let temp=0; temp<totalbooks; temp++){
+				var temp1 = document.createElement('button');
+				temp1.id = "button" + temp;
+				temp1.class = "buttons";
+				temp1.innerHTML = bookData.Book[temp].Name;
+				bookDiv.appendChild(temp1);
+				var horizontalrule = document.createElement("hr");
+				bookDiv.appendChild(horizontalrule);
+				x = document.getElementsByTagName('button');
+				//$(temp1).addEventListener('click', openbook, false);
+			}
+		});
+	</script>
+</head>
+<body>
+	<div class="row">
+		<div class="col-md-12" id="books">
+
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//console.log(x.length);
+			for(let temp=0; temp<x.length; temp++){
+				//console.log(x[temp]);
+				addEvent(x[temp], temp);
+			}
+			function addEvent(element, temp){
+				element.addEventListener('click', function(){
+					openbook(temp);
+				});
+			}
+			function openbook(temp){
+				//  This is very important for furthur changes remove this
+				sessionStorage.setItem("book", temp);
+				window.location.href = "ebook.html";
+			}
+		});
+	</script>
+	<script type="text/javascript">
+
+
+	</script>
+</body>
+</html>
